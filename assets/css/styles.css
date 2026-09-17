@@ -304,17 +304,7 @@ img, svg { max-width: 100%; }
   color: #7a8399;
 }
 
-.mockup-body { padding: 22px; display: grid; gap: 16px; }
-.mk-row { display: flex; align-items: center; gap: 10px; }
-.mk-row .mk-bar:first-child { background: var(--navy-800); }
-.mk-bar { height: 10px; border-radius: 999px; background: #e4e8f0; }
-.mk-hero { display: grid; gap: 12px; padding: 26px 22px; background: #f5f7fb; border-radius: 12px; }
-.mk-hero .mk-bar.lg { height: 22px; width: 68%; background: var(--navy-800); }
-.mk-hero .mk-bar.lg2 { height: 22px; width: 44%; background: var(--red); }
-.mk-hero .mk-bar.sm { height: 8px; width: 54%; }
-.mk-pill { width: 108px; height: 30px; border-radius: 999px; background: var(--red); }
-.mk-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.mk-card { height: 82px; border-radius: 12px; border: 1px solid #e7eaf2; background: #fff; }
+.mockup img { display: block; width: 100%; height: auto; }
 
 .mockup-caption {
   margin: 18px 0 0;
@@ -324,11 +314,6 @@ img, svg { max-width: 100%; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-muted);
-}
-
-@media (max-width: 720px) {
-  .mk-cards { grid-template-columns: 1fr 1fr; }
-  .mk-cards .mk-card:last-child { display: none; }
 }
 
 /* --------------------------------------------------------------------------
@@ -349,6 +334,84 @@ img, svg { max-width: 100%; }
 .facts > div { background: var(--paper); padding: 24px 22px; }
 .facts dt { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--red-ink); }
 .facts dd { margin: 8px 0 0; font-family: var(--display); font-size: 1.1rem; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   Work
+   -------------------------------------------------------------------------- */
+
+.work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+
+/* The lead project runs full width with the shot beside the write-up. */
+.work-card-lead { grid-column: span 2; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+.work-card-lead .work-shot { border-bottom: 0; border-right: 1px solid var(--line); }
+/* The lead card's copy column is taller than its content — centre it rather than
+   letting the stack chips float to the bottom of a mostly empty column. */
+.work-card-lead .work-body { justify-content: center; }
+.work-card-lead .work-stack { margin-top: 10px; }
+
+.work-shot { background: #eceff5; border-bottom: 1px solid var(--line); }
+.work-chrome { display: flex; align-items: center; gap: 7px; padding: 10px 13px; }
+.work-dot { width: 8px; height: 8px; border-radius: 50%; background: #c8cdda; flex: none; }
+.work-url {
+  margin-left: 8px;
+  padding: 4px 11px;
+  background: #fff;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  color: #7a8399;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.work-shot img { display: block; width: 100%; height: auto; }
+
+.work-body { padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.work-body h3 { color: var(--navy-800); margin: 0; }
+.work-body p { color: var(--ink-muted); font-size: 0.96rem; margin: 0; }
+
+.work-tag {
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--red-ink);
+}
+
+.work-stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 4px; }
+.work-stack span {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+
+.work-link { font-weight: 600; font-size: 0.94rem; text-decoration: none; align-self: flex-start; }
+.work-link:hover { text-decoration: underline; }
+.work-link::after { content: " \2197"; }
+
+@media (max-width: 900px) {
+  .work-grid { grid-template-columns: 1fr; }
+  .work-card-lead { grid-column: span 1; grid-template-columns: 1fr; }
+  .work-card-lead .work-shot { border-right: 0; border-bottom: 1px solid var(--line); }
+}
 
 /* --------------------------------------------------------------------------
    Pricing
