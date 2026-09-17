@@ -12,10 +12,15 @@
   --navy-800: #1c2a4a;
   --navy-700: #26375c;
 
-  /* Crimson */
-  --crimson: #b3232c;
-  --crimson-700: #931a22;
-  --crimson-300: #f3898d;   /* the only crimson that is legible on navy */
+  /* Red — sampled from the logo. Two values, by job:
+     --red is the logo's own red, used for fills, buttons and graphics.
+     --red-ink is a deeper red for small text and links on light grounds,
+     where the logo red only reaches 4.7:1 and this reaches 6.6:1.
+     --red-soft is the only red legible as text on navy. */
+  --red: #de2028;
+  --red-600: #b81a21;
+  --red-ink: #b3232c;
+  --red-soft: #f3898d;
 
   /* Light surfaces */
   --paper: #f4f6fa;
@@ -81,12 +86,12 @@ h3 { font-size: 1.2rem; letter-spacing: -0.015em; line-height: 1.25; }
 p { margin: 0 0 1.05em; }
 p:last-child { margin-bottom: 0; }
 
-a { color: var(--crimson); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
-a:hover { color: var(--crimson-700); }
+a { color: var(--red-ink); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+a:hover { color: var(--red-600); }
 
 img, svg { max-width: 100%; }
 
-:focus-visible { outline: 3px solid var(--crimson); outline-offset: 3px; border-radius: 6px; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 6px; }
 
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--navy-800); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0; }
 .skip-link:focus { left: 0; color: #fff; }
@@ -133,10 +138,10 @@ img, svg { max-width: 100%; }
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--crimson);
+  color: var(--red-ink);
 }
 .label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.on-dark .label, .slab .label { color: var(--crimson-300); }
+.on-dark .label, .slab .label { color: var(--red-soft); }
 
 .lede { font-size: clamp(1.03rem, 1.6vw, 1.2rem); color: var(--ink-muted); max-width: 58ch; }
 .slab .lede, .on-dark .lede { color: var(--d-muted); }
@@ -166,8 +171,8 @@ img, svg { max-width: 100%; }
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
 
-.btn-primary { background: var(--crimson); border-color: var(--crimson); color: #fff; }
-.btn-primary:hover { background: var(--crimson-700); border-color: var(--crimson-700); color: #fff; }
+.btn-primary { background: var(--red); border-color: var(--red); color: #fff; }
+.btn-primary:hover { background: var(--red-600); border-color: var(--red-600); color: #fff; }
 
 .btn-light { background: #fff; border-color: #fff; color: var(--navy-800); }
 .btn-light:hover { background: #eef1f7; border-color: #eef1f7; color: var(--navy-800); }
@@ -197,23 +202,34 @@ img, svg { max-width: 100%; }
   box-shadow: 0 10px 30px rgba(19, 26, 43, 0.07);
 }
 
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
+/* Logo lockup. The mark is the T monogram from the logo; the wordmark is set
+   in Baloo 2, the closest rounded geometric to the logo's lettering. Swap both
+   for the supplied logo file when it lands — see README. */
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand:hover { color: inherit; }
+.brand-mark { width: 30px; height: 30px; flex: none; }
+.brand-word {
+  font-family: "Baloo 2", "Trebuchet MS", sans-serif;
+  font-weight: 800;
+  font-size: 1.34rem;
+  line-height: 1;
+  letter-spacing: -0.005em;
   color: var(--navy-800);
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.02em;
 }
-.brand:hover { color: var(--navy-800); }
-.brand svg { width: 28px; height: 28px; flex: none; }
+.on-dark .brand-word, .slab .brand-word { color: #fff; }
+
+.brand-lockup { display: inline-flex; flex-direction: column; gap: 5px; }
+.brand-tagline {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
 
 .nav-links { margin-left: auto; display: flex; gap: 26px; list-style: none; margin-block: 0; padding: 0; }
 .nav-links a { color: var(--ink); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
-.nav-links a:hover { color: var(--crimson); }
+.nav-links a:hover { color: var(--red-ink); }
 
 .nav-bar .btn { padding: 11px 20px; font-size: 0.95rem; }
 
@@ -236,7 +252,7 @@ img, svg { max-width: 100%; }
   right: -12%;
   width: 62%;
   height: 120%;
-  background: radial-gradient(circle at 50% 50%, rgba(179, 35, 44, 0.55), transparent 62%);
+  background: radial-gradient(circle at 50% 50%, rgba(222, 32, 40, 0.55), transparent 62%);
   pointer-events: none;
 }
 
@@ -247,7 +263,7 @@ img, svg { max-width: 100%; }
   padding: clamp(34px, 6vw, 74px) clamp(24px, 6vw, 76px) clamp(130px, 17vw, 210px);
 }
 .hero h1 { margin: 18px 0 22px; color: #fff; max-width: 15ch; }
-.hero h1 .accent { color: var(--crimson-300); }
+.hero h1 .accent { color: var(--red-soft); }
 .hero .lede { max-width: 52ch; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 
@@ -294,9 +310,9 @@ img, svg { max-width: 100%; }
 .mk-bar { height: 10px; border-radius: 999px; background: #e4e8f0; }
 .mk-hero { display: grid; gap: 12px; padding: 26px 22px; background: #f5f7fb; border-radius: 12px; }
 .mk-hero .mk-bar.lg { height: 22px; width: 68%; background: var(--navy-800); }
-.mk-hero .mk-bar.lg2 { height: 22px; width: 44%; background: var(--crimson); }
+.mk-hero .mk-bar.lg2 { height: 22px; width: 44%; background: var(--red); }
 .mk-hero .mk-bar.sm { height: 8px; width: 54%; }
-.mk-pill { width: 108px; height: 30px; border-radius: 999px; background: var(--crimson); }
+.mk-pill { width: 108px; height: 30px; border-radius: 999px; background: var(--red); }
 .mk-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .mk-card { height: 82px; border-radius: 12px; border: 1px solid #e7eaf2; background: #fff; }
 
@@ -331,7 +347,7 @@ img, svg { max-width: 100%; }
   overflow: hidden;
 }
 .facts > div { background: var(--paper); padding: 24px 22px; }
-.facts dt { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--crimson); }
+.facts dt { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--red-ink); }
 .facts dd { margin: 8px 0 0; font-family: var(--display); font-size: 1.1rem; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
 
 /* --------------------------------------------------------------------------
@@ -365,7 +381,7 @@ img, svg { max-width: 100%; }
   text-transform: uppercase;
   padding: 5px 10px;
   border-radius: 999px;
-  background: var(--crimson);
+  background: var(--red);
   color: #fff;
   white-space: nowrap;
 }
@@ -410,10 +426,10 @@ img, svg { max-width: 100%; }
   height: 7px;
   margin-top: 8px;
   border-radius: 2px;
-  background: var(--crimson);
+  background: var(--red);
   transform: rotate(45deg);
 }
-.tier-dark ul li::before { background: var(--crimson-300); }
+.tier-dark ul li::before { background: var(--red-soft); }
 
 /* "Everything in X" is not a feature — it is a pointer to the tier below. */
 .tier ul li.carried { color: var(--ink-muted); font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -446,7 +462,7 @@ img, svg { max-width: 100%; }
   font-family: var(--mono);
   font-size: 0.8rem;
   letter-spacing: 0.1em;
-  color: var(--crimson-300);
+  color: var(--red-soft);
   padding-top: 5px;
 }
 .track h3 { color: #fff; margin-bottom: 6px; }
@@ -477,8 +493,8 @@ img, svg { max-width: 100%; }
 .bento .cell-wide { grid-column: span 3; }
 .bento .cell-accent {
   grid-column: span 3;
-  background: var(--crimson);
-  border-color: var(--crimson);
+  background: var(--red);
+  border-color: var(--red);
   color: #fff;
 }
 .bento .cell-accent h3 { color: #fff; }
@@ -529,13 +545,13 @@ img, svg { max-width: 100%; }
   border-radius: 50%;
   border: 1.5px solid var(--line);
   background:
-    linear-gradient(var(--crimson), var(--crimson)) center / 10px 1.5px no-repeat,
-    linear-gradient(var(--crimson), var(--crimson)) center / 1.5px 10px no-repeat;
+    linear-gradient(var(--red), var(--red)) center / 10px 1.5px no-repeat,
+    linear-gradient(var(--red), var(--red)) center / 1.5px 10px no-repeat;
   transition: transform 0.18s ease, border-color 0.18s ease;
 }
 .faq details[open] summary::after {
   transform: rotate(45deg);
-  border-color: var(--crimson);
+  border-color: var(--red);
 }
 .faq details p { margin: 0 0 22px; padding-right: 46px; color: var(--ink-muted); }
 
@@ -549,7 +565,7 @@ img, svg { max-width: 100%; }
 .contact-direct { margin: 28px 0 0; padding-top: 24px; border-top: 1px solid var(--d-line); display: grid; gap: 16px; }
 .contact-direct dt { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--d-muted); }
 .contact-direct dd { margin: 5px 0 0; font-size: 1.05rem; font-weight: 600; }
-.contact-direct a { color: var(--crimson-300); }
+.contact-direct a { color: var(--red-soft); }
 .contact-direct a:hover { color: #fff; }
 
 .form-card { background: #fff; color: var(--ink); border-radius: var(--r-card); padding: clamp(22px, 4vw, 32px); }
@@ -569,8 +585,8 @@ img, svg { max-width: 100%; }
 }
 .field textarea { min-height: 124px; resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus {
-  border-color: var(--crimson);
-  outline: 2px solid rgba(179, 35, 44, 0.16);
+  border-color: var(--red);
+  outline: 2px solid rgba(222, 32, 40, 0.16);
   background: #fff;
 }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -599,7 +615,7 @@ img, svg { max-width: 100%; }
   color: var(--ink-muted);
 }
 .footer-bar a { color: var(--ink-muted); }
-.footer-bar a:hover { color: var(--crimson); }
+.footer-bar a:hover { color: var(--red-ink); }
 
 /* --------------------------------------------------------------------------
    Thank-you page

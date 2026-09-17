@@ -1,11 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <rect width="1200" height="630" fill="#1C2A4A"/>
-  <rect x="0" y="0" width="1200" height="8" fill="#B3232C"/>
-  <g transform="translate(96 232)">
-    <rect width="96" height="96" rx="18" fill="#FFFFFF"/>
-    <rect x="21" y="25.5" width="54" height="13.5" fill="#B3232C"/>
-    <rect x="41.25" y="25.5" width="13.5" height="45" fill="#1C2A4A"/>
+  <rect width="1200" height="630" fill="#131B30"/>
+  <rect x="0" y="0" width="1200" height="10" fill="#DE2028"/>
+  <g transform="translate(96 214)">
+    <rect width="120" height="120" rx="26" fill="#1C2A4A"/>
+    <g transform="skewX(-11) scale(1.875)">
+      <rect x="16" y="17" width="13" height="9.5" rx="2.6" fill="#DE2028"/>
+      <rect x="31.5" y="17" width="19" height="9.5" rx="2.6" fill="#FFFFFF"/>
+      <rect x="29" y="17" width="10.5" height="31" rx="2.8" fill="#FFFFFF"/>
+    </g>
   </g>
-  <text x="228" y="300" font-family="Verdana, DejaVu Sans, sans-serif" font-size="76" font-weight="bold" letter-spacing="10" fill="#FFFFFF">TRENTINO</text>
-  <text x="232" y="360" font-family="Verdana, DejaVu Sans, sans-serif" font-size="30" letter-spacing="2" fill="#E8747C">Custom websites for Adelaide businesses</text>
+  <text x="252" y="290" font-family="Verdana, DejaVu Sans, sans-serif" font-size="78" font-weight="bold" letter-spacing="2" fill="#FFFFFF">Trentino</text>
+  <text x="256" y="346" font-family="Verdana, DejaVu Sans, sans-serif" font-size="26" letter-spacing="7" fill="#A9B3CC">WEB DESIGN &amp; DEVELOPMENT</text>
 </svg>

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Trentino">
-  <rect width="64" height="64" rx="14" fill="#1C2A4A"/>
+  <rect width="64" height="64" rx="14" fill="#F7F7F4"/>
   <g transform="skewX(-11)">
     <rect x="16" y="17" width="13" height="9.5" rx="2.6" fill="#DE2028"/>
-    <rect x="31.5" y="17" width="19" height="9.5" rx="2.6" fill="#FFFFFF"/>
-    <rect x="29" y="17" width="10.5" height="31" rx="2.8" fill="#FFFFFF"/>
+    <rect x="31.5" y="17" width="19" height="9.5" rx="2.6" fill="#1C2A4A"/>
+    <rect x="29" y="17" width="10.5" height="31" rx="2.8" fill="#1C2A4A"/>
   </g>
 </svg>
