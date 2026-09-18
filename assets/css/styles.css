@@ -680,6 +680,144 @@ img, svg { max-width: 100%; }
 .footer-bar a { color: var(--ink-muted); }
 .footer-bar a:hover { color: var(--red-ink); }
 
+
+/* --------------------------------------------------------------------------
+   Motion
+   Everything here is gated on the `.js` class, set inline in the head, so the
+   page renders fully visible when JS is off. The reduced-motion block at the
+   bottom of this file turns all of it off.
+   -------------------------------------------------------------------------- */
+
+/* Reveal on scroll. Opacity + transform only, so it stays on the compositor. */
+.js [data-reveal],
+.js [data-stagger] > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) var(--reveal-delay, 0ms),
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.js [data-reveal].is-in,
+.js [data-stagger] > *.is-in { opacity: 1; transform: none; will-change: auto; }
+
+/* Hero entrance: the same idea, but time-based rather than scroll-based. */
+.js .hero [data-enter] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.22, 0.61, 0.36, 1) var(--enter-delay, 0ms),
+              transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1) var(--enter-delay, 0ms);
+}
+.js.is-loaded .hero [data-enter] { opacity: 1; transform: none; }
+
+.js .hero [data-enter="1"] { --enter-delay: 40ms; }
+.js .hero [data-enter="2"] { --enter-delay: 140ms; }
+.js .hero [data-enter="3"] { --enter-delay: 240ms; }
+.js .hero [data-enter="4"] { --enter-delay: 330ms; }
+.js .hero [data-enter="5"] { --enter-delay: 420ms; }
+
+/* The hero screenshot also scales up slightly as it arrives. */
+.js .hero [data-enter="5"] { transform: translateY(34px) scale(0.985); }
+.js.is-loaded .hero [data-enter="5"] { transform: none; }
+
+/* Reading progress, pinned under the nav pill. */
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Marquee
+   -------------------------------------------------------------------------- */
+
+.marquee-band {
+  background: var(--navy-800);
+  color: #fff;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  padding-block: 15px;
+}
+
+.marquee { display: flex; width: max-content; animation: marquee-slide 42s linear infinite; }
+.marquee:hover, .marquee:focus-within { animation-play-state: paused; }
+
+.marquee ul {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.marquee li {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding-right: 26px;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+}
+.marquee li::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  background: var(--red-soft);
+  transform: rotate(45deg);
+}
+
+@keyframes marquee-slide { to { transform: translateX(-50%); } }
+
+/* --------------------------------------------------------------------------
+   Hover
+   -------------------------------------------------------------------------- */
+
+.work-card { transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.3s ease; }
+.work-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+.work-shot { overflow: hidden; }
+.work-shot img { transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.work-card:hover .work-shot img { transform: scale(1.035); }
+
+.tier { transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.3s ease; }
+.tier:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+
+.bento .cell { transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.bento .cell:hover { transform: translateY(-3px); }
+
+/* Nav links get an underline that grows from the left. */
+.nav-links a { position: relative; }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 2px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); }
+
+/* FAQ answers slide rather than snap. */
+@keyframes faq-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+.faq details[open] p { animation: faq-open 0.32s cubic-bezier(0.22, 0.61, 0.36, 1); }
+
 /* --------------------------------------------------------------------------
    Thank-you page
    -------------------------------------------------------------------------- */
@@ -693,6 +831,15 @@ img, svg { max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-  .btn:hover { transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .btn:hover, .work-card:hover, .tier:hover, .bento .cell:hover { transform: none; }
+  .work-card:hover .work-shot img { transform: none; }
+  /* Nothing stays hidden waiting on a scroll that will not be animated. */
+  .js [data-reveal], .js [data-stagger] > *, .js .hero [data-enter] { opacity: 1 !important; transform: none !important; }
+  .marquee { animation: none; }
+  .marquee-band { overflow-x: auto; }
 }

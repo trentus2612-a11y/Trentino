@@ -15,6 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#131b30">
 
+<script>document.documentElement.className += " js";</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,6 +64,7 @@
         </ul>
       </nav>
       <a class="btn btn-primary" href="#contact">Get a quote</a>
+      <span class="scroll-progress"></span>
     </div>
   </div>
 </header>
@@ -74,21 +76,21 @@
     <div class="wrap">
       <div class="slab hero-slab">
         <div class="hero-inner">
-          <p class="label">Adelaide, South Australia</p>
-          <h1>Websites built by hand, <span class="accent">not by template.</span></h1>
-          <p class="lede">
+          <p class="label" data-enter="1">Adelaide, South Australia</p>
+          <h1 data-enter="2">Websites built by hand, <span class="accent">not by template.</span></h1>
+          <p class="lede" data-enter="3">
             I'm Trent. I build fast, custom websites for small Adelaide businesses —
             on your own domain, in your own accounts. No page builders, no monthly
             lock-in, no site you can't take with you.
           </p>
-          <div class="hero-actions">
+          <div class="hero-actions" data-enter="4">
             <a class="btn btn-primary" href="#contact">Start a project</a>
             <a class="btn btn-outline" href="#pricing">See pricing</a>
           </div>
         </div>
       </div>
 
-      <div class="hero-visual">
+      <div class="hero-visual" data-enter="5">
         <div class="mockup">
           <div class="mockup-bar">
             <span class="mockup-dot"></span>
@@ -105,34 +107,36 @@
     </div>
   </section>
 
-  <!-- ===================== Facts ===================== -->
-  <section class="section" style="padding-top:clamp(28px,4vw,48px)">
+  <!-- ===================== Marquee ===================== -->
+  <section class="section" style="padding-block:clamp(20px,3vw,34px)" aria-label="How Trentino builds">
     <div class="wrap">
-      <dl class="facts">
-        <div>
-          <dt>Hosting</dt>
-          <dd>Netlify</dd>
+      <div class="marquee-band" data-reveal>
+        <div class="marquee">
+        <ul>
+          <li>Hosted on Netlify</li>
+          <li>Payments via Stripe</li>
+          <li>Backends on Supabase</li>
+          <li>Your own domain</li>
+          <li>Bug fixes always free</li>
+          <li>No monthly lock-in</li>
+        </ul>
+        <ul aria-hidden="true">
+          <li>Hosted on Netlify</li>
+          <li>Payments via Stripe</li>
+          <li>Backends on Supabase</li>
+          <li>Your own domain</li>
+          <li>Bug fixes always free</li>
+          <li>No monthly lock-in</li>
+        </ul>
         </div>
-        <div>
-          <dt>Payments</dt>
-          <dd>Stripe</dd>
-        </div>
-        <div>
-          <dt>Backend</dt>
-          <dd>Supabase</dd>
-        </div>
-        <div>
-          <dt>Bug fixes</dt>
-          <dd>Always free</dd>
-        </div>
-      </dl>
+      </div>
     </div>
   </section>
 
   <!-- ===================== Work ===================== -->
   <section class="section" id="work" style="padding-top:clamp(28px,4vw,48px)">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <p class="label">Recent work</p>
         <h2>Three builds, three different problems</h2>
         <p class="lede">
@@ -142,7 +146,7 @@
         </p>
       </div>
 
-      <div class="work-grid">
+      <div class="work-grid" data-stagger>
 
         <article class="work-card work-card-lead">
           <div class="work-shot">
@@ -219,7 +223,7 @@
   <section class="section" id="pricing" style="padding-top:clamp(28px,4vw,48px)">
     <div class="wrap">
       <div class="pricing-head">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <p class="label">Pricing</p>
           <h2>Three ways to start</h2>
           <p class="lede">
@@ -230,7 +234,7 @@
         <p class="note">All prices AUD · 50% to book · 50% on delivery</p>
       </div>
 
-      <div class="tiers">
+      <div class="tiers" data-stagger>
 
         <article class="tier">
           <div class="tier-top"><h3>Starter Site</h3></div>
@@ -282,7 +286,7 @@
 
       </div>
 
-      <p class="pricing-foot">
+      <p class="pricing-foot" data-reveal>
         Prices exclude third-party running costs, which you pay directly: a domain is roughly
         $20–$30 a year, Netlify and Supabase have free tiers that suit most small sites, and
         Stripe takes a percentage per transaction. I don't mark any of it up.
@@ -295,13 +299,13 @@
     <div class="wrap">
       <div class="slab">
         <div class="slab-inner">
-          <div class="section-head">
+          <div class="section-head" data-reveal>
             <p class="label">How it works</p>
             <h2>Four steps, no mystery</h2>
             <p class="lede">You'll always know what's being built, what it costs, and when it lands.</p>
           </div>
 
-          <ol class="track">
+          <ol class="track" data-stagger>
             <li>
               <div>
                 <h3>Chat</h3>
@@ -335,7 +339,7 @@
   <!-- ===================== Ownership ===================== -->
   <section class="section" id="ownership">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <p class="label">No lock-in</p>
         <h2>You own everything</h2>
         <p class="lede">
@@ -344,7 +348,7 @@
         </p>
       </div>
 
-      <div class="bento">
+      <div class="bento" data-stagger>
         <div class="cell cell-accent">
           <h3>Bug fixes are free</h3>
           <p>If something I built breaks, I fix it. No ticket, no invoice, no time limit — that's not a support plan, it's just doing the job properly.</p>
@@ -373,13 +377,13 @@
   <section class="section" id="faq">
     <div class="wrap">
       <div class="faq-grid">
-        <div class="section-head">
+        <div class="section-head" data-reveal>
           <p class="label">Questions</p>
           <h2>The things people ask first</h2>
           <p class="lede">Can't see yours? Ask it in the form below — I answer properly, not with a brochure.</p>
         </div>
 
-        <div class="faq">
+        <div class="faq" data-stagger>
           <details>
             <summary>Why are your prices lower than other studios?</summary>
             <p>
@@ -448,7 +452,7 @@
     <div class="wrap">
       <div class="slab">
         <div class="slab-inner">
-          <div class="contact-grid">
+          <div class="contact-grid" data-stagger>
 
             <div>
               <p class="label">Get started</p>
@@ -544,6 +548,8 @@
     </div>
   </div>
 </footer>
+
+<script src="/assets/js/motion.js" defer></script>
 
 </body>
 </html>
