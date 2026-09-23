@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /thanks.html
 
-Sitemap: https://trentino.com.au/sitemap.xml
+Sitemap: https://trentino-6z36.netlify.app/sitemap.xml
