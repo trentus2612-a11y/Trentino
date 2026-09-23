@@ -1,9 +1,10 @@
 /* ==========================================================================
    Trentino — design tokens
-   Brand: crimson #B3232C + navy-indigo #1C2A4A.
-   Neutrals are biased cool/navy rather than pure grey, so the whole page
-   reads as one family. Crimson is the only hue accent — it is never
-   competing with a second colour.
+   Brand: graphite #121418 + signal blue #2F5BE0.
+   The blue appears only where something is clickable or live; spending it on
+   decoration is what would break this palette. Neutrals are cool and faintly
+   blue rather than pure grey, so the accent belongs to the same family as
+   the ground instead of sitting on top of it.
    ========================================================================== */
 
 :root {
