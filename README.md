@@ -18,7 +18,6 @@ root exactly as it is, so what you see locally is what goes live.
 | `assets/css/styles.css` | All styling. Brand tokens live in `:root` at the top |
 | `assets/img/mark.svg` | T monogram, navy tile (also copied to `favicon.svg`) |
 | `assets/img/mark-light.svg` | Same monogram on a light tile, for dark backgrounds |
-| `assets/img/og-image.svg` | Social share image |
 | `netlify.toml` | Publish dir, security headers, cache rules, `/thanks` redirect |
 | `robots.txt`, `sitemap.xml` | Search engine basics |
 
@@ -96,7 +95,7 @@ then add:
 ```
 
 Use the dark-on-light version in the header and footer, and the light version
-anywhere it sits on a slab. Replace `favicon.svg` and `assets/img/og-image.svg`
+anywhere it sits on a slab. Replace `favicon.svg` and `assets/img/og-image.png`
 to match.
 
 ## Colour
