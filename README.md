@@ -11,6 +11,10 @@ root exactly as it is, so what you see locally is what goes live.
 | --- | --- |
 | `index.html` | The whole site — hero, pricing, process, ownership, FAQ, contact form |
 | `thanks.html` | Form success page (Netlify redirects here after a submission) |
+| `404.html` | Not-found page; Netlify serves it automatically, no config needed |
+| `work/performance-covers.html` | First case study |
+| `assets/js/nav.js` | Mobile menu. Separate from motion.js on purpose — see below |
+| `assets/img/og-image.png` | Social share card, 1200x630 |
 | `assets/css/styles.css` | All styling. Brand tokens live in `:root` at the top |
 | `assets/img/mark.svg` | T monogram, navy tile (also copied to `favicon.svg`) |
 | `assets/img/mark-light.svg` | Same monogram on a light tile, for dark backgrounds |
@@ -122,6 +126,29 @@ contrast-checked against the surface it sits on.
 
 The neutrals are cool and very slightly blue rather than pure grey, so the page
 reads as one family instead of a blue accent dropped onto grey.
+
+## The mobile menu
+
+Below 880px the links collapse behind a button. It lives in `assets/js/nav.js`
+rather than `motion.js` because that file returns early for visitors who prefer
+reduced motion, and navigation has to work for them too.
+
+It degrades in the right direction: without JavaScript the `js` class is never
+set, the button never appears, and the links simply show stacked under the bar.
+Usable, just not tidy. Test that path by removing the inline `js` class setter
+in the `<head>`.
+
+## The social share card
+
+`assets/img/og-image.png` is a real PNG, because Facebook, LinkedIn and iMessage
+do not render SVG share images. It is generated from an HTML file rather than
+drawn by hand — the source lives in the session that made it, so if the headline
+or price on the card needs to change, the quickest path is to rebuild it from
+`index.html`'s hero at 1200x630 and re-export.
+
+Note the `og:image` URL is absolute (`https://trentino.com.au/...`). It has to
+be: relative URLs do not work for social crawlers. Update it when the real
+domain is settled.
 
 ## Things that are built but switched off
 

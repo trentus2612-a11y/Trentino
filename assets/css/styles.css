@@ -232,9 +232,77 @@ img, svg { max-width: 100%; }
 
 .nav-bar .btn { padding: 11px 20px; font-size: 0.95rem; }
 
+/* The hamburger only exists when JS is there to run it. */
+.nav-toggle { display: none; }
+
 @media (max-width: 880px) {
-  .nav-links { display: none; }
-  .nav-bar .btn { margin-left: auto; }
+  .nav-bar { position: relative; flex-wrap: wrap; gap: 10px; align-items: center; }
+  /* A pill that has wrapped to three rows renders as an ellipse — once the
+     menu is open the bar has to become an ordinary rounded rectangle. */
+  .nav-bar.is-open { border-radius: 24px; }
+  /* With no JS the links are always shown, so the bar is never a pill. */
+  html:not(.js) .nav-bar { border-radius: 24px; }
+
+  /* The flex child here is the <nav> wrapper, not the list inside it. */
+  .nav-bar > nav { order: 3; flex-basis: 100%; }
+  .js .nav-bar > nav { display: none; }
+  .js .nav-bar.is-open > nav { display: block; }
+  .nav-bar .btn { padding: 10px 17px; font-size: 0.9rem; }
+
+  /* Without JS the links simply stack under the bar: plain, but usable. */
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--line);
+  }
+  .nav-links a { display: block; padding: 13px 8px; font-size: 1rem; text-align: left; }
+  .nav-links a::after { display: none; }
+
+  .js .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+    width: 42px;
+    height: 42px;
+    flex: none;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .js .nav-toggle span {
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 0.22s ease, opacity 0.22s ease;
+  }
+  .js .nav-toggle span::before,
+  .js .nav-toggle span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 16px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 0.22s ease;
+  }
+  .js .nav-toggle span::before { top: -5px; }
+  .js .nav-toggle span::after { top: 5px; }
+
+  .js .nav-bar.is-open .nav-toggle span { background: transparent; }
+  .js .nav-bar.is-open .nav-toggle span::before { transform: translateY(5px) rotate(45deg); }
+  .js .nav-bar.is-open .nav-toggle span::after { transform: translateY(-5px) rotate(-45deg); }
+
+
+  .nav-bar > .btn { margin-left: auto; order: 1; }
 }
 
 /* --------------------------------------------------------------------------
