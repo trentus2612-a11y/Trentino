@@ -550,6 +550,11 @@
             </div>
 
             <div class="form-card">
+              <!-- Netlify detects this form while processing index.html during a deploy.
+                   Detection must be ON in the dashboard BEFORE the deploy that carries this
+                   file, and deploys are incremental: if index.html has not changed, it is not
+                   re-uploaded and not re-scanned. Turning detection on later does nothing until
+                   this file changes again. -->
               <form name="enquiry" method="POST" data-netlify="true" netlify-honeypot="company-website" action="/thanks.html">
                 <input type="hidden" name="form-name" value="enquiry">
                 <p class="form-hp">
