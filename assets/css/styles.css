@@ -464,6 +464,95 @@ img, svg { max-width: 100%; }
 }
 .promo-fine { margin: 12px 0 0; font-size: 0.8rem; color: var(--ink-muted); }
 
+
+/* --------------------------------------------------------------------------
+   Estimator
+   Every figure it shows also appears in the pricing section — it maps answers
+   onto published tiers rather than inventing numbers.
+   -------------------------------------------------------------------------- */
+
+/* Interactive, so it only exists when there is JS to run it. Without it the
+   pricing table sits immediately above, which answers the same question. */
+.est-section { display: none; }
+.js .est-section { display: block; }
+
+.est {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 44px);
+  align-items: start;
+  padding: clamp(26px, 4vw, 40px);
+  background: var(--graphite-800);
+  border-radius: var(--r-slab);
+  color: var(--d-ink);
+}
+@media (max-width: 860px) { .est { grid-template-columns: 1fr; } }
+
+.est fieldset { border: 0; margin: 0 0 24px; padding: 0; }
+.est fieldset:last-of-type { margin-bottom: 0; }
+.est legend {
+  padding: 0 0 11px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--d-muted);
+}
+.est-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* The input stays in the accessibility tree and drives the visible chip. */
+.est-opts input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.est-opts span {
+  display: inline-block;
+  padding: 9px 16px;
+  border: 1px solid var(--d-line);
+  border-radius: 999px;
+  font-size: 0.93rem;
+  color: var(--d-ink);
+  cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+.est-opts label:hover span { border-color: rgba(255, 255, 255, 0.35); }
+.est-opts input:checked + span { background: var(--signal); border-color: var(--signal); color: #fff; }
+.est-opts input:focus-visible + span { outline: 3px solid var(--signal-soft); outline-offset: 3px; }
+
+.est-out {
+  background: var(--card);
+  color: var(--ink);
+  border-radius: var(--r-card);
+  padding: 26px 24px;
+  position: sticky;
+  top: 118px;
+}
+@media (max-width: 860px) { .est-out { position: static; } }
+
+.est-tier {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal-ink);
+}
+.est-price {
+  display: block;
+  margin: 10px 0 6px;
+  font-size: clamp(1.8rem, 3.4vw, 2.3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+.est-time { display: block; font-size: 0.92rem; color: var(--ink-muted); }
+.est-note {
+  margin: 16px 0 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+.est-fine { margin: 12px 0 0; font-size: 0.8rem; color: var(--ink-muted); }
+
 /* --------------------------------------------------------------------------
    Work
    -------------------------------------------------------------------------- */
