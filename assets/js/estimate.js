@@ -41,14 +41,14 @@
     starter: {
       tier: 'Starter Site',
       price: '$349',
-      time: 'Usually 1–2 weeks',
+      time: 'Usually under a week',
       note: 'Up to five pages, a contact form, and your own domain connected. Fixed price, not an hourly estimate.',
       select: 'Starter Site — up to 5 pages'
     },
     starterPlus: {
       tier: 'Starter Site, extended',
       price: 'From $349',
-      time: 'Usually 2–3 weeks',
+      time: 'Usually 1–2 weeks',
       note: 'The Starter build covers five pages. Beyond that I quote the extra pages on top rather than guess at them here — it depends what is on them.',
       select: 'Starter Site — up to 5 pages'
     }
