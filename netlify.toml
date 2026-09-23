@@ -14,10 +14,25 @@
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
 # Long-cache fingerprint-free assets modestly; HTML stays fresh.
+# Images are long-lived — they change only when replaced by hand.
 [[headers]]
-  for = "/assets/*"
+  for = "/assets/img/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# CSS and JS must NOT be cached this way. These filenames never change, so a
+# long max-age means a returning visitor keeps an old stylesheet for days after
+# a fix ships. must-revalidate costs one conditional request and returns 304
+# when nothing changed, which for a 32KB file is the right trade.
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/*.html"

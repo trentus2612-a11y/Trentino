@@ -126,6 +126,19 @@ contrast-checked against the surface it sits on.
 The neutrals are cool and very slightly blue rather than pure grey, so the page
 reads as one family instead of a blue accent dropped onto grey.
 
+## Caching, and the `?v=` on the asset URLs
+
+`netlify.toml` caches `/assets/img/*` for a week, but CSS and JS are set to
+`must-revalidate`. That difference matters: these filenames carry no content
+hash, so a long cache on the stylesheet means a returning visitor keeps the old
+one for days after a fix ships. It cost a real round of "the fix is deployed but
+I still see the bug".
+
+The `?v=2` on the stylesheet and script URLs exists for the same reason. **Bump
+it whenever CSS or JS changes in a way visitors must see immediately** — it makes
+the URL new, so any copy already sitting in someone's browser is bypassed rather
+than waited out. Change it in all four HTML files at once.
+
 ## The mobile menu
 
 Below 880px the links collapse behind a button. It lives in `assets/js/nav.js`
