@@ -733,6 +733,93 @@ img, svg { max-width: 100%; }
   pointer-events: none;
 }
 
+
+/* --- 3. Word-by-word headings ------------------------------------------- */
+/* Each word sits in a masked wrapper and rises out of it. The padding/margin
+   pair keeps descenders (g, y, p) from being clipped by that mask. */
+.js .split .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.js .split .w-i {
+  display: inline-block;
+  transform: translateY(108%);
+  transition: transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) var(--wd, 0ms);
+}
+.js .split.is-in .w-i { transform: none; }
+/* The hero headline waits for the eyebrow above it. */
+.js .hero h1 .w-i { transition-delay: calc(var(--wd, 0ms) + 130ms); }
+
+/* --- 4. Work screenshots uncovered by a wipe ----------------------------- */
+.work-shot { position: relative; }
+.js .work-card .work-shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--paper);
+  transform-origin: 100% 50%;
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1) 0.15s;
+}
+.js .work-card.is-in .work-shot::after { transform: scaleX(0); }
+.js .work-card .work-shot img { transform: scale(1.08); transition: transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.js .work-card.is-in .work-shot img { transform: none; }
+/* Beat the .is-in rule above, or the hover zoom would never apply. */
+.js .work-card.is-in:hover .work-shot img { transform: scale(1.035); }
+
+/* --- 6. Custom cursor ---------------------------------------------------- */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.25s ease, width 0.25s ease, height 0.25s ease,
+              margin 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+.cursor-dot { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; background: var(--red); }
+.cursor-ring { width: 30px; height: 30px; margin: -15px 0 0 -15px; border: 1.5px solid rgba(28, 42, 74, 0.45); }
+
+.cursor-live .cursor-dot, .cursor-live .cursor-ring { opacity: 1; }
+.cursor-hot .cursor-ring {
+  width: 54px; height: 54px; margin: -27px 0 0 -27px;
+  border-color: var(--red);
+  background: rgba(222, 32, 40, 0.07);
+}
+.cursor-hot .cursor-dot { opacity: 0; }
+.cursor-down .cursor-ring { width: 22px; height: 22px; margin: -11px 0 0 -11px; }
+
+/* The system cursor is hidden only once ours is confirmed drawing, and never
+   over text entry, where the I-beam is doing real work. */
+.has-cursor, .has-cursor a, .has-cursor button, .has-cursor summary { cursor: none; }
+.has-cursor input, .has-cursor textarea, .has-cursor select { cursor: auto; }
+
+/* --- 5. Pinned process column ------------------------------------------- */
+.process-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.5fr);
+  gap: clamp(28px, 6vw, 72px);
+  align-items: start;
+}
+.process-grid .section-head {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 120px);
+  margin-bottom: 0;
+}
+/* The track now sits in a narrower column, so the number gutter that suited
+   full width leaves the numbers stranded from their headings. */
+.process-grid .track li { grid-template-columns: 38px minmax(0, 1fr); gap: 20px; }
+
+@media (max-width: 880px) {
+  .process-grid { grid-template-columns: 1fr; }
+  .process-grid .section-head { position: static; }
+}
+
 /* --------------------------------------------------------------------------
    Marquee
    -------------------------------------------------------------------------- */
@@ -841,5 +928,10 @@ img, svg { max-width: 100%; }
   /* Nothing stays hidden waiting on a scroll that will not be animated. */
   .js [data-reveal], .js [data-stagger] > *, .js .hero [data-enter] { opacity: 1 !important; transform: none !important; }
   .marquee { animation: none; }
+  .js .split .w-i { transform: none !important; }
+  .js .split .w { overflow: visible; }
+  .js .work-card .work-shot::after { display: none; }
+  .js .work-card .work-shot img { transform: none !important; }
+  .cursor-dot, .cursor-ring { display: none; }
   .marquee-band { overflow-x: auto; }
 }
