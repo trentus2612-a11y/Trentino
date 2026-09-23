@@ -709,13 +709,17 @@ img, svg { max-width: 100%; }
 
 .quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
 .quote {
+  display: flex;
+  flex-direction: column;
   padding: 26px 24px;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--r-card);
 }
 .quote blockquote { margin: 0 0 16px; font-size: 1.04rem; line-height: 1.55; color: var(--ink); }
-.quote figcaption { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.quote figcaption {
+  margin-top: auto;
+  padding-top: 4px; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 
 /* --------------------------------------------------------------------------
    Process — a real sequence, so it is numbered and tracked
