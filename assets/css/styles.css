@@ -875,6 +875,33 @@ img, svg { max-width: 100%; }
 .form-sent p { color: var(--ink-muted); }
 
 /* --------------------------------------------------------------------------
+   Sticky action bar — phones only
+   A visitor two-thirds down a long page should not have to scroll anywhere to
+   act. Hidden on desktop, where the nav CTA is always in view anyway.
+   -------------------------------------------------------------------------- */
+
+.action-bar { display: none; }
+
+@media (max-width: 880px) {
+  .action-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 55;
+    display: flex;
+    gap: 9px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: saturate(150%) blur(12px);
+    border-top: 1px solid var(--line);
+  }
+  .action-bar .btn { flex: 1; padding: 13px 14px; font-size: 0.95rem; }
+  /* Keep the footer clear of the bar. */
+  body { padding-bottom: 74px; }
+}
+
+/* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */
 
