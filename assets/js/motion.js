@@ -6,10 +6,10 @@
  *   3. Headlines that rise in word by word from behind a mask
  *   4. Work screenshots uncovered by a wipe
  *   5. Parallax drift on the hero screenshot + a reading progress bar
- *   6. Magnetic buttons and a custom cursor  (fine pointers only)
  *
- * Scrolling is deliberately left native: an eased-wheel version was tried and
- * felt wrong to use, which is worse than no effect at all.
+ * Two effects were tried and removed: eased "weighted" scrolling, and a custom
+ * cursor with magnetic buttons. Both drew attention to themselves rather than
+ * to the work, which is worse than no effect at all.
  *
  * Three rules hold throughout:
  *   - The `js` class is set inline in the head. With JS off or broken, none of
@@ -24,9 +24,6 @@
   var root = document.documentElement;
   var mq = window.matchMedia;
   var reduced = mq && mq('(prefers-reduced-motion: reduce)').matches;
-  // Pointer-driven effects are desktop-only: a custom cursor is meaningless on
-  // touch, and phones already have better momentum scrolling than we can fake.
-  var finePointer = mq && mq('(pointer: fine)').matches && !('ontouchstart' in window);
 
   function revealAll() {
     var els = document.querySelectorAll('[data-reveal], [data-stagger] > *, .split');
@@ -137,58 +134,5 @@
   }, { passive: true });
   paintScroll();
 
-  if (!finePointer) return;
-
-  /* ------------------------------------------------------------ 6. magnetic */
-  var magnets = document.querySelectorAll('[data-magnetic]');
-  for (var m = 0; m < magnets.length; m++) {
-    (function (el) {
-      el.addEventListener('pointermove', function (e) {
-        var r = el.getBoundingClientRect();
-        var dx = e.clientX - (r.left + r.width / 2);
-        var dy = e.clientY - (r.top + r.height / 2);
-        el.style.transform = 'translate(' + (dx * 0.18).toFixed(1) + 'px,' + (dy * 0.28).toFixed(1) + 'px)';
-      });
-      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
-    })(magnets[m]);
-  }
-
-  /* -------------------------------------------------------------- 6. cursor */
-  try {
-    var dot = document.createElement('div');
-    dot.className = 'cursor-dot';
-    var ring = document.createElement('div');
-    ring.className = 'cursor-ring';
-    document.body.appendChild(dot);
-    document.body.appendChild(ring);
-
-    var px = window.innerWidth / 2, py = window.innerHeight / 2;
-    var rx = px, ry = py, seen = false;
-
-    document.addEventListener('pointermove', function (e) {
-      px = e.clientX; py = e.clientY;
-      if (!seen) { rx = px; ry = py; seen = true; root.classList.add('cursor-live'); }
-      dot.style.transform = 'translate3d(' + px + 'px,' + py + 'px,0)';
-    }, { passive: true });
-
-    document.addEventListener('pointerdown', function () { root.classList.add('cursor-down'); });
-    document.addEventListener('pointerup', function () { root.classList.remove('cursor-down'); });
-
-    var hot = document.querySelectorAll('a, button, summary, .work-card, .tier');
-    for (var h = 0; h < hot.length; h++) {
-      hot[h].addEventListener('pointerenter', function () { root.classList.add('cursor-hot'); });
-      hot[h].addEventListener('pointerleave', function () { root.classList.remove('cursor-hot'); });
-    }
-
-    (function ringLoop() {
-      rx += (px - rx) * 0.16;
-      ry += (py - ry) * 0.16;
-      ring.style.transform = 'translate3d(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px,0)';
-      requestAnimationFrame(ringLoop);
-    })();
-
-    // Only hide the system cursor once ours is definitely drawing.
-    root.classList.add('has-cursor');
-  } catch (err) { /* keep the system cursor */ }
 
 })();
