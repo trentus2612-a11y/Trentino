@@ -1,14 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <rect width="1200" height="630" fill="#131B30"/>
-  <rect x="0" y="0" width="1200" height="10" fill="#DE2028"/>
-  <g transform="translate(96 214)">
-    <rect width="120" height="120" rx="26" fill="#1C2A4A"/>
-    <g transform="skewX(-11) scale(1.875)">
-      <rect x="16" y="17" width="13" height="9.5" rx="2.6" fill="#DE2028"/>
-      <rect x="31.5" y="17" width="19" height="9.5" rx="2.6" fill="#FFFFFF"/>
-      <rect x="29" y="17" width="10.5" height="31" rx="2.8" fill="#FFFFFF"/>
-    </g>
+  <rect width="1200" height="630" fill="#0E1014"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#2F5BE0"/>
+  <g transform="translate(96 216) scale(1.9)">
+    <rect width="64" height="64" rx="16" fill="#1D2027"/>
+    <rect x="16" y="19" width="32" height="6" fill="#F6F7F9"/>
+    <rect x="29" y="19" width="6" height="27" fill="#F6F7F9"/>
+    <circle cx="45" cy="43" r="4" fill="#6E93FF"/>
   </g>
-  <text x="252" y="290" font-family="Verdana, DejaVu Sans, sans-serif" font-size="78" font-weight="bold" letter-spacing="2" fill="#FFFFFF">Trentino</text>
-  <text x="256" y="346" font-family="Verdana, DejaVu Sans, sans-serif" font-size="26" letter-spacing="7" fill="#A9B3CC">WEB DESIGN &amp; DEVELOPMENT</text>
+  <text x="248" y="300" font-family="Verdana, DejaVu Sans, sans-serif" font-size="76" font-weight="bold" letter-spacing="-2" fill="#F6F7F9">trentino</text>
+  <text x="252" y="352" font-family="Verdana, DejaVu Sans, sans-serif" font-size="25" letter-spacing="6" fill="#9BA3B4">WEB DESIGN &amp; DEVELOPMENT</text>
 </svg>

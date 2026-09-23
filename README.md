@@ -50,70 +50,78 @@ free tier includes 100 submissions per month.
 
 ## Typefaces
 
-Three faces, loaded from Google Fonts in one request, each with a real fallback:
+Two families, loaded from Google Fonts in one request, each with a real fallback:
 
 | Role | Face | Used for |
 | --- | --- | --- |
-| Wordmark | Baloo 2 ExtraBold | the "Trentino" lockup only |
-| Display | Bricolage Grotesque | headings |
-| Body | Figtree | running text, buttons, form fields |
+| Display & body | Manrope | the wordmark, headings and all running text |
 | Utility | JetBrains Mono | eyebrows, prices, step numbers, small labels |
+
+This was four families until the brand direction changed; Manrope now covers
+what Bricolage Grotesque, Figtree and Baloo 2 were each doing separately.
 
 ## The logo
 
-`assets/img/mark.svg` is the **T monogram redrawn as vector** from the logo sheet
-Trent supplied — two skewed bars plus a stem, in a rounded navy square. It is also
-copied to `favicon.svg` and used inline in the page headers. `assets/img/mark-light.svg`
-is the same mark on a light tile, for use on dark backgrounds.
+`assets/img/mark.svg` is the T monogram: a graphite tile, a T in the surface
+colour, and one signal-blue dot. It is also copied to `favicon.svg`.
+`assets/img/mark-light.svg` inverts it for use on dark backgrounds.
 
-The full wordmark (the slanted T, the red asterisk over the i, and the final o drawn
-as a browser window) is **not** reproduced here. The site sets "Trentino" in
-[Baloo 2](https://fonts.google.com/specimen/Baloo+2) ExtraBold instead, which is the
-closest rounded geometric on Google Fonts.
+The wordmark is not artwork — it is the word "trentino" set in Manrope 800,
+lowercase, tracked at -0.045em. That is deliberate: a wordmark that is live text
+stays sharp at every size, needs no asset, and can be restyled from CSS.
 
-### Dropping in the real logo file
+### Replacing it with exported artwork
 
-When the exported logo is available, put it in `assets/img/` and swap the lockup —
-one change in each of `index.html` (two places: header and footer) and `thanks.html`:
+If a designed logo is ever commissioned, drop the file in `assets/img/` and swap
+the lockup — one change in each of `index.html` (header and footer) and
+`thanks.html`:
 
 ```html
 <!-- replace this -->
 <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">…</svg>
-<span class="brand-word">Trentino</span>
+<span class="brand-word">trentino</span>
 
 <!-- with this -->
 <img class="brand-logo" src="/assets/img/logo.svg" alt="Trentino" width="170" height="36">
 ```
 
-then add to the stylesheet:
+then add:
 
 ```css
 .brand-logo { height: 34px; width: auto; display: block; }
 ```
 
-Use the **navy-on-light** version in the header and footer, and the **white-on-navy**
-version anywhere it sits on a slab. SVG is strongly preferred over PNG — it stays
-sharp on every screen and the file is smaller. If only a PNG exists, export it at
-3× the display size.
-
-Also replace `favicon.svg` (the square icon version) and `assets/img/og-image.svg`
-(the social share card) so they match.
+Use the dark-on-light version in the header and footer, and the light version
+anywhere it sits on a slab. Replace `favicon.svg` and `assets/img/og-image.svg`
+to match.
 
 ## Colour
 
-Two reds, by job:
+Graphite and one signal blue. The blue appears only where something is
+clickable or live — that restraint is the whole idea, so resist spending it on
+decoration.
 
 ```css
---red:     #de2028;  /* the logo's red — fills, buttons, the mark, graphics */
---red-ink: #b3232c;  /* deeper — small text and links on light backgrounds */
---red-soft:#f3898d;  /* the only red legible as text on navy */
---navy-800:#1c2a4a;  /* brand navy */
---navy-900:#131b30;  /* deeper navy for the hero slab */
+--graphite-900: #0e1014;  /* the hero slab */
+--graphite-800: #121418;  /* slabs, headings, the mark */
+--graphite-700: #1d2027;  /* lifted dark surfaces */
+
+--signal:      #2f5be0;   /* fills, buttons, graphics */
+--signal-ink:  #2a52cc;   /* small text and links on light grounds */
+--signal-soft: #6e93ff;   /* anything on graphite */
+
+--paper:       #f6f7f9;   /* page ground */
+--ink:         #121418;   /* body text */
+--ink-muted:   #5a6070;   /* secondary text */
 ```
 
-The split exists because the logo red only reaches 4.7:1 against white, which is
-tight for 12px label text. `--red-ink` reaches 6.6:1. Anything that is a shape
-rather than small text should use `--red`.
+Three blues rather than one, because a single value cannot clear 4.5:1 on both
+a white and a graphite ground. Use `--signal` for shapes, `--signal-ink` for
+words on light, `--signal-soft` for anything on dark. Every value above has been
+contrast-checked against the surface it sits on.
+
+The neutrals are cool and very slightly blue rather than pure grey, so the page
+reads as one family instead of a blue accent dropped onto grey.
 
 ## Content worth reviewing before launch
 
