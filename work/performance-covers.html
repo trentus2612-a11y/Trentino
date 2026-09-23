@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance Covers Australia — Case Study | Trentino</title>
+<meta name="description" content="How Trentino built Performance Covers Australia an online cover configurator, an order admin panel and Stripe checkout — so quoting stopped happening over text message.">
+<link rel="canonical" href="https://trentino.com.au/work/performance-covers.html">
+<meta name="theme-color" content="#0e1014">
+<script>document.documentElement.className += " js";</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="nav-bar">
+      <a class="brand" href="/" aria-label="Trentino home">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect width="64" height="64" rx="16" fill="#121418"/>
+          <rect x="16" y="19" width="32" height="6" fill="#F6F7F9"/>
+          <rect x="29" y="19" width="6" height="27" fill="#F6F7F9"/>
+          <circle cx="45" cy="43" r="4" fill="#6E93FF"/>
+        </svg>
+        <span class="brand-word">Trentino</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#process">Process</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-primary" href="/#contact">Get a quote</a>
+      <span class="scroll-progress"></span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section case-head">
+    <div class="wrap">
+      <p class="label"><a href="/#work" style="color:inherit">Work</a> · Case study</p>
+      <h1 data-split>Custom car covers, configured online</h1>
+      <p class="lede">
+        Performance Covers Australia sells made-to-measure indoor and outdoor car covers
+        from Adelaide, printed with the owner's logo and shipped nationwide. Every order is
+        different — make, model, colour, logo — which made quoting the slowest part of the job.
+      </p>
+
+      <dl class="case-facts">
+        <div><dt>Tier</dt><dd>Business + Backend</dd></div>
+        <div><dt>Built with</dt><dd>Netlify · Supabase · Stripe</dd></div>
+        <div><dt>Live at</dt><dd><a href="https://performancecoversaustralia.netlify.app" target="_blank" rel="noopener">performancecoversaustralia.netlify.app</a></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="work-shot case-shot" data-reveal>
+        <div class="work-chrome">
+          <span class="work-dot"></span><span class="work-dot"></span><span class="work-dot"></span>
+          <span class="work-url">performancecoversaustralia.netlify.app</span>
+        </div>
+        <img src="/assets/img/work/performance-covers.webp" width="1120" height="700"
+             alt="The Performance Covers Australia homepage: a car under a fitted cover, behind the headline Protect it. Personalise it. Own it."
+             loading="eager" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:clamp(20px,3vw,36px)">
+    <div class="wrap">
+      <div class="case-body">
+
+        <h2 data-split>The problem</h2>
+        <p>
+          A cover is not one product — it is a make, a model, a fabric, a colour and usually a
+          logo. Every enquiry arrived as a message asking what it would cost, and every answer
+          meant going back and forth on details before a price existed. That is slow for the
+          customer and unpaid work for the business.
+        </p>
+        <!-- FILL IN: what they were doing before, in their words. A sentence about how
+             many enquiries a week, or how long a quote used to take, belongs here. -->
+
+        <h2 data-split>What I built</h2>
+        <p>
+          A three-step configurator on the front of the site. The customer picks their make,
+          then their model, then the finish — fabric, colour swatch, and their own logo
+          uploaded straight into the page. By the end of the third step they have a price and
+          a summary of exactly what they are buying, without anyone having answered a message.
+        </p>
+        <p>
+          Behind it sits a Supabase database holding orders, prices, and a library of uploaded
+          logos, plus an event log so the history of an order is never guesswork. The owner
+          gets an admin panel — password protected — listing orders as they arrive. Payment
+          runs through Stripe Checkout, so card details never touch the site and the money
+          lands directly in the client's own Stripe account.
+        </p>
+        <p>
+          The site is also installable and works offline, because a customer standing in a shed
+          with two bars of signal is a real scenario, not a hypothetical.
+        </p>
+
+        <h3>What that meant in practice</h3>
+        <ul class="case-list">
+          <li><b>Quoting moved off the phone.</b> The price exists before the conversation starts.</li>
+          <li><b>Orders arrive complete.</b> Make, model, finish and artwork all attached, so nothing has to be chased.</li>
+          <li><b>The owner runs it.</b> The admin panel is theirs — no request to me to look something up.</li>
+          <li><b>Everything is in their accounts.</b> Their Netlify, their Supabase, their Stripe.</li>
+        </ul>
+
+        <!-- FILL IN: results. Anything true and specific beats anything vague —
+             orders taken since launch, hours a week saved, enquiries that now arrive
+             already priced. One real number is worth the whole page. Delete this
+             section rather than inventing a figure. -->
+
+        <h2 data-split>Want one like it?</h2>
+        <p>
+          This was a Business&nbsp;+&nbsp;Backend build — the middle tier, $900–$1,800, currently
+          $150 off while I build the portfolio. If your business has a product that changes
+          from customer to customer, the same approach works.
+        </p>
+        <p style="margin-top:26px">
+          <a class="btn btn-primary" href="/#contact">Start a project</a>
+          <a class="btn btn-outline" href="/#pricing" style="margin-left:9px">See pricing</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bar">
+      <a class="brand" href="/" aria-label="Trentino home">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect width="64" height="64" rx="16" fill="#121418"/>
+          <rect x="16" y="19" width="32" height="6" fill="#F6F7F9"/>
+          <rect x="29" y="19" width="6" height="27" fill="#F6F7F9"/>
+          <circle cx="45" cy="43" r="4" fill="#6E93FF"/>
+        </svg>
+        <span class="brand-lockup">
+          <span class="brand-word">Trentino</span>
+          <span class="brand-tagline">Web design &amp; development</span>
+        </span>
+      </a>
+      <p style="margin:0">Adelaide, South Australia</p>
+      <p style="margin:0"><a href="mailto:trentus2612@gmail.com">trentus2612@gmail.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/motion.js" defer></script>
+
+</body>
+</html>

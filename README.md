@@ -123,6 +123,44 @@ contrast-checked against the surface it sits on.
 The neutrals are cool and very slightly blue rather than pure grey, so the page
 reads as one family instead of a blue accent dropped onto grey.
 
+## Things that are built but switched off
+
+Two blocks sit commented out in `index.html`, ready to enable:
+
+- **Testimonials** — search for `Testimonials`. Delete the two comment marker
+  lines, replace each quote and name, and it appears between the work and the
+  process sections. Do not publish it with the placeholder text in place.
+- **Book a call** — search for `PASTE_YOUR_BOOKING_LINK` in the contact section.
+  Paste a booking URL (Cal.com has a free tier), remove the comment markers.
+
+## The speed numbers
+
+The `#speed` section quotes 47 KB / 142 KB / 7 files. Those are measured, not
+estimated, so they go stale as the site changes. To re-measure:
+
+```bash
+python3 - <<'EOF'
+import gzip, os
+text = ['index.html', 'assets/css/styles.css', 'assets/js/motion.js', 'favicon.svg']
+imgs = ['assets/img/work/oztrek4x4.webp', 'assets/img/work/performance-covers.webp',
+        'assets/img/work/ice-blast-adelaide.webp']
+tg = sum(len(gzip.compress(open(f,'rb').read(), 6)) for f in text)
+ti = sum(os.path.getsize(f) for f in imgs)
+print(f'first screen : {(tg + os.path.getsize(imgs[0]))/1024:.0f} KB')
+print(f'whole page   : {(tg+ti)/1024:.0f} KB over {len(text)+len(imgs)} files')
+EOF
+```
+
+The figures exclude webfonts, which are fetched from Google's CDN — worth saying
+if anyone asks, since it is the one number that isn't self-hosted.
+
+## Case studies
+
+`work/performance-covers.html` is the first one. It has two `FILL IN` comments:
+what the client was doing before, and the result. A single true number beats the
+whole page of description — and if there isn't one, delete the section rather
+than inventing it.
+
 ## Content worth reviewing before launch
 
 - Pricing ranges in the `#pricing` section.
