@@ -685,8 +685,22 @@ img, svg { max-width: 100%; }
 .case-body h2:first-child { margin-top: 0; }
 .case-body h3 { margin-top: 34px; }
 .case-list { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; }
-.case-list li { display: grid; grid-template-columns: 16px 1fr; gap: 11px; align-items: start; color: var(--ink-muted); }
-.case-list li::before { content: ""; width: 7px; height: 7px; margin-top: 9px; border-radius: 2px; background: var(--signal); transform: rotate(45deg); }
+/* Not a grid: these items hold a <b> plus a text node, and grid would make
+   those two separate items — the sentence would drop onto the next row and
+   wrap inside the 16px marker column, one word per line. The marker is
+   positioned instead, so the text flows as one paragraph. */
+.case-list li { position: relative; padding-left: 27px; color: var(--ink-muted); }
+.case-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--signal);
+  transform: rotate(45deg);
+}
 .case-list b { color: var(--ink); font-weight: 600; }
 
 /* --------------------------------------------------------------------------
