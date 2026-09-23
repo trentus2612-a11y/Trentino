@@ -7,7 +7,9 @@
  *   4. Work screenshots uncovered by a wipe
  *   5. Parallax drift on the hero screenshot + a reading progress bar
  *   6. Magnetic buttons and a custom cursor  (fine pointers only)
- *   7. Weighted smooth scrolling             (fine pointers only)
+ *
+ * Scrolling is deliberately left native: an eased-wheel version was tried and
+ * felt wrong to use, which is worse than no effect at all.
  *
  * Three rules hold throughout:
  *   - The `js` class is set inline in the head. With JS off or broken, none of
@@ -189,41 +191,4 @@
     root.classList.add('has-cursor');
   } catch (err) { /* keep the system cursor */ }
 
-  /* -------------------------------------------------- 7. weighted scrolling
-   * Wheel events are intercepted and eased toward a target, but the real
-   * window scroll position is what moves — so position:sticky, fixed headers
-   * and anchor links all keep working, unlike a transformed-wrapper approach.
-   */
-  var target = window.pageYOffset;
-  var current = target;
-  var animating = false;
-
-  function maxScroll() { return root.scrollHeight - window.innerHeight; }
-
-  function glide() {
-    current += (target - current) * 0.14;
-    if (Math.abs(target - current) < 0.5) { current = target; animating = false; }
-    else { requestAnimationFrame(glide); }
-    window.scrollTo(0, current);
-  }
-
-  window.addEventListener('wheel', function (e) {
-    if (e.ctrlKey) return;                       // pinch-zoom
-    var delta = e.deltaY;
-    if (e.deltaMode === 1) delta *= 16;          // lines
-    else if (e.deltaMode === 2) delta *= window.innerHeight;
-    e.preventDefault();
-    target = Math.max(0, Math.min(target + delta, maxScroll()));
-    if (!animating) { animating = true; requestAnimationFrame(glide); }
-  }, { passive: false });
-
-  // Anything that scrolls by other means — keyboard, scrollbar, anchor links —
-  // resyncs the target so the next wheel tick does not snap back.
-  window.addEventListener('scroll', function () {
-    if (!animating) { target = current = window.pageYOffset; }
-  }, { passive: true });
-
-  window.addEventListener('resize', function () {
-    target = current = window.pageYOffset;
-  }, { passive: true });
 })();
