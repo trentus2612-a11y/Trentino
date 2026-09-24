@@ -126,6 +126,18 @@ contrast-checked against the surface it sits on.
 The neutrals are cool and very slightly blue rather than pure grey, so the page
 reads as one family instead of a blue accent dropped onto grey.
 
+## Running the business
+
+Three internal notes live in `docs/`. They are in the repo so they are versioned
+and always to hand, and `netlify.toml` returns 404 for `/docs/*` so they are not
+readable from the live site.
+
+| File | What it is |
+| --- | --- |
+| `docs/getting-clients.md` | The automotive niche, the spec-mockup outreach play, message templates, target list |
+| `docs/scope-template.md` | Fill-in scope and quote to send before starting any job |
+| `docs/handover.md` | End-of-build checklist that makes "the accounts are yours" actually true |
+
 ## Caching, and the `?v=` on the asset URLs
 
 `netlify.toml` caches `/assets/img/*` for a week, but CSS and JS are set to
