@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://trentino-adelaide.netlify.app/</loc>
+    <loc>https://trentinowebdesign.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://trentino-adelaide.netlify.app/work/performance-covers.html</loc>
+    <loc>https://trentinowebdesign.com/work/performance-covers.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://trentino-adelaide.netlify.app/privacy.html</loc>
+    <loc>https://trentinowebdesign.com/privacy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

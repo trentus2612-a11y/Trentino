@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /thanks.html
 
-Sitemap: https://trentino-adelaide.netlify.app/sitemap.xml
+Sitemap: https://trentinowebdesign.com/sitemap.xml

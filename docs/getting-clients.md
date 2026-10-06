@@ -40,7 +40,7 @@ of work.
 > Gday — I build websites for automotive businesses around Adelaide. I had a look
 > at yours and made a start on what it could be. No charge, no obligation, just
 > thought it'd be easier to show you than describe it. Have a look when you get
-> a minute — trentino-adelaide.netlify.app
+> a minute — trentinowebdesign.com
 
 ### Email or DM
 
@@ -73,7 +73,7 @@ gets a name; "let me know if you hear of anything" gets nothing.
 ## When they say "how much?"
 
 Send them to the estimator rather than quoting on the spot:
-`trentino-adelaide.netlify.app/#estimate`
+`trentinowebdesign.com/#estimate`
 
 They get a number immediately, and the enquiry arrives already scoped. Quoting
 in a text message is how you end up building a $1,500 site for $349.
