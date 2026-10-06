@@ -620,6 +620,9 @@ img, svg { max-width: 100%; }
   border-radius: 7px;
 }
 
+/* Two links on one card (live site + case study) sit on a row, not stacked. */
+.work-links { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+
 .work-link { font-weight: 600; font-size: 0.94rem; text-decoration: none; align-self: flex-start; }
 .work-link:hover { text-decoration: underline; }
 .work-link::after { content: " \2197"; }
